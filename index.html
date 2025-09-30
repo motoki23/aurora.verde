@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Verde</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: black; /* fundo preto liso */
+    }
+
+    header {
+      background-color: rgba(0, 128, 0, 0.8);
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero {
+      position: relative;
+      text-align: center;
+      color: white;
+      z-index: 5;
+    }
+
+    .hero img {
+      width: 100%;
+      opacity: 0.6; 
+    }
+
+    .hero h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    main {
+      padding: 30px;
+      line-height: 1.8;
+      position: relative;
+      z-index: 10;
+    }
+
+    main h2 {
+      color: #90ee90;
+    }
+
+    ul {
+      margin-top: 15px;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .gallery img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid green;
+    }
+
+    footer {
+      background-color: rgba(0, 128, 0, 0.8);
+      text-align: center;
+      padding: 15px;
+      font-weight: bold;
+      color: white;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Folhas emoji caindo */
+    .leaf {
+      position: fixed;
+      font-size: 28px;
+      animation: fallDiag linear forwards;
+      pointer-events: none;
+      z-index: 0; /* fundo */
+    }
+
+    @keyframes fallDiag {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(50vw, 50vh) rotate(180deg);
+      }
+      100% {
+        transform: translate(100vw, 100vh) rotate(360deg);
+        opacity: 0.6;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Aurora Verde
+  </header>
+
+  <section class="hero">
+    <img src="6966201-tropical-verde-folhas-em-fundo-escuro-natureza-verao-floresta-planta-conceito-foto (1).jpg" alt="Sustentabilidade">
+    <h1>"Não existem problemas ambientais, existem apenas sintomas ambientais de problemas humanos"</h1>
+  </section>
+
+  <main>
+    <h2>Importância da Sustentabilidade</h2>
+    <ul>
+      <li>Preserva os recursos naturais para as futuras gerações.</li>
+      <li>Reduz os impactos ambientais causados pela atividade humana.</li>
+      <li>Promove qualidade de vida e equilíbrio ecológico.</li>
+    </ul>
+
+    <h2>Formas de ser sustentável</h2>
+    <ul>
+      <li>Economizar energia e água.</li>
+      <li>Reciclar e reduzir o consumo de plástico.</li>
+      <li>Optar por transportes menos poluentes.</li>
+      <li>Consumir de forma consciente e apoiar empresas verdes.</li>
+    </ul>
+
+    <div class="gallery">
+      <img src="https://source.unsplash.com/300x200/?recycle" alt="Reciclagem">
+      <img src="https://source.unsplash.com/300x200/?nature" alt="Natureza">
+      <img src="https://source.unsplash.com/300x200/?renewable-energy" alt="Energia Renovável">
+      <img src="https://source.unsplash.com/300x200/?sustainability" alt="Sustentabilidade">
+    </div>
+  </main>
+
+  <footer>
+    Aurora Verde © 2025 - Todos os direitos reservados
+  </footer>
+
+  <script>
+    const leaves = ["🍃","🍂","🍁"];
+
+    function createLeaf() {
+      const leaf = document.createElement("div");
+      leaf.classList.add("leaf");
+      leaf.innerText = leaves[Math.floor(Math.random() * leaves.length)];
+
+      // Sorteia se a folha vem "de cima" ou "do canto esquerdo"
+      const fromTop = Math.random() > 0.5;
+
+      if (fromTop) {
+        // nasce bem em cima, posição X aleatória
+        leaf.style.left = Math.random() * window.innerWidth * 0.3 + "px";
+        leaf.style.top = -(50 + Math.random() * 200) + "px";
+      } else {
+        // nasce mais do canto esquerdo, altura aleatória
+        leaf.style.left = -(50 + Math.random() * 100) + "px";
+        leaf.style.top = Math.random() * window.innerHeight * 0.3 + "px";
+      }
+
+      // tamanho aleatório
+      leaf.style.fontSize = (20 + Math.random() * 25) + "px";
+
+      // duração aleatória
+      const duration = 12 + Math.random() * 10; 
+      leaf.style.animationDuration = duration + "s";
+
+      document.body.appendChild(leaf);
+
+      // remover depois da animação
+      setTimeout(() => {
+        leaf.remove();
+      }, duration * 1000 + 1000);
+    }
+
+    // poucas folhas
+    setInterval(createLeaf, 4000);
+  </script>
+
+</body>
+</html>
